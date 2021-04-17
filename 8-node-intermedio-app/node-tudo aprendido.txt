@@ -1,0 +1,68 @@
+
+http codes:
+
+1xx - informational
+2xx - success
+3xx - redirect
+4xx - error client
+5xx - server error
+
+	node intermedio
+instalo o typscript : yarn add typescript -D
+rodo o : yarn tsc --init
+vou no tsconfig e seto o rootDir e o outdir
+instalo o yarn ts-node-dev -D
+
+	eslint
+yarn add eslint -D
+yarn eslint --init:
+	-3, 1, 3, Y, 2, 1, 1, 3, n
+
+	importando arqs ts
+
+yarn add eslint-import-resolver-typescript -D
+vou no eslintconfig e add uma key settings
+
+	prettier
+yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+add algumas key no eslintconfig
+crio na raiz prettier.config.js
+
+	criando container do banco
+docker run --name gobarber -e POSTGRES-PASSWORD=docker -p 5432:5432 -d postgres
+
+	config typeorm
+na raiz crio um arq ormconfig.json
+yarn add typeorm pg
+crio uma pasta database e dento dela um arq index.ts
+vou no arq server.ts e importo o database
+
+	criando a tabela de agendamentos
+vou no ormconfig e add uma key de migrations
+crio a minha migration: yarn migration:create -n CreateAppointments
+
+
+	ciando model de agendamento
+dentro de src crio uma pasta models e dentro um arq Appointment.ts
+
+	repository typeorm
+dentro de src crio i=uma pasta repositories e dentro um appointmentRepository
+crio outra pasta dentro de src services e dentro um arq CreateAppointmentService.ts
+agora dento de src crio outra pasta routes e dentro dois arq um, appointments.routes.ts e outro index.ts
+
+obs importante: (
+	quando eu for criar o agendamento no insomnia , ao passar os campos date, ela de receber o valor de 
+	Timestamp => ISO-8seis01
+)
+
+	models e migration de USer
+rodo yarn typeorm migration:create -n CreateUsers
+vou na migration e add os campos
+agora rodo a migration: yarn typeorm migration:run
+agora vou na pasta models e crio um arq User.ts
+
+	relacionamento nos models
+vou no model appointment e mudo o campo provider para provider-id
+agora crio uma nova migration para alterar esse campo: yarn typeorm migration:create -n AlterProviderFieldToProviderId
+rodo a miggration
+depois vou no model de appointment e crio uma propriedade chamada provider_id que vai ser do tipo do model User

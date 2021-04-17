@@ -1,0 +1,94 @@
+
+http codes:
+
+1xx - informational
+2xx - success
+3xx - redirect
+4xx - error client
+5xx - server error
+
+	node intermedio
+instalo o typscript : yarn add typescript -D
+rodo o : yarn tsc --init
+vou no tsconfig e seto o rootDir e o outdir
+instalo o yarn ts-node-dev -D
+
+	eslint
+yarn add eslint -D
+yarn eslint --init:
+	-3, 1, 3, Y, 2, 1, 1, 3, n
+
+	importando arqs ts
+
+yarn add eslint-import-resolver-typescript -D
+vou no eslintconfig e add uma key settings
+
+	prettier
+yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+add algumas key no eslintconfig
+crio na raiz prettier.config.js
+
+	criando container do banco
+docker run --name gobarber -e POSTGRES-PASSWORD=docker -p 5432:5432 -d postgres
+
+	config typeorm
+na raiz crio um arq ormconfig.json
+yarn add typeorm pg
+crio uma pasta database e dento dela um arq index.ts
+vou no arq server.ts e importo o database
+
+	criando a tabela de agendamentos
+vou no ormconfig e add uma key de migrations
+crio a minha migration: yarn migration:create -n CreateAppointments
+
+
+	criando model de agendamento
+dentro de src crio uma pasta models e dentro um arq Appointment.ts
+
+	repository typeorm
+dentro de src crio uma pasta repositories e dentro um appointmentRepository
+crio outra pasta dentro de src services e dentro um arq CreateAppointmentService.ts
+agora dento de src crio outra pasta routes e dentro dois arq um, appointments.routes.ts e outro index.ts
+
+	cadastro de um novo user
+vou na pasta routes e crio um arq user.routes.ts
+vou no index.ts da pasta routes e crio um middleware para users importando o usersRouter.ts
+agora crio um novo service para user
+agora vou nas rotas de user e crio um user
+	
+	criando hash de senha
+instalo o yarn add bcryptjs
+vou no service de user e import o hash do bcryptjs e crio um hash pra senha
+
+	autentificacao
+crio u arq dentro da folder routes chamado sessions.routes.ts
+vou no index da pasta routes e crio uma rota pra sessions
+agora crio um service authenticateUserService.ts
+
+	autenticacao v2
+add o yarn add jsonwebtoken
+agora vou no service authenticateUserService e importo o metodo sign do jsonwebtoken
+vou no session routes e desestruturo o token junto com o email e senha
+
+	rotas autenticadas
+vou no insominia e add o token na listagem e criacao do agendamento
+agora vou na app dentro de src crio uma pasta middlewares e dentro o arq ensureAuthenticated.ts
+vou nas rotas de appointments e importo ele e crio um midleware pk todas rotas vao usar ele
+
+	upload de arqs
+crio uma nova migration para add um novo campo avatar na tabela de user
+vou nas rotas do user e crio uma nova rota com o metodo patch pra criar o avatar
+instalo o yarn add multer
+dentro  da pasta config crio um arq upload.ts
+vou na raiz e crio uma pasta tmp e dentro um arq gitkeep
+vou no arq gitignore e add esse codigo: temp/ tmp/* !tmp/.gitkeep
+depos de configurar o arq upload.ts volto pras rotas do user e importo o multerConfig e o multer
+
+	atualizando avatar
+crio um service updateUserAvatarService
+agora vou na rota user e importo o updateuseravatarservice
+vou no model de user e add uma coluna de avatar
+volto pro service e crio a logica de actualizar ou criar a foto de avatar
+
+	servindo arqs staticos
+vou no rq server.ts e crio um middleware /files

@@ -1,0 +1,21 @@
+programacao declarativa - 
+
+babel - converte o js para uma versao que o browser entenda
+webpack - cria o bundle, um arq que contem todos codigos js
+
+yarn init -y
+yarn add react react-dom
+yarn add @babel/core @babel/preset-env @babel/preset-react webpack webpack-cli
+
+na raiz crio o arq babel.config.js 
+yarn add @babel/cli
+
+rodo yarn babel src/index.js --out-file public/bundle.js
+
+crio na raiz um arq webpack.config.js
+
+rodo yarn add babel-loader
+rodo yarn webpack --mode development
+
+rodo yarn add webpack-dev-server -D
+rodo yarn webpack-dev-server --mode development

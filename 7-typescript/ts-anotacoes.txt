@@ -1,0 +1,4 @@
+rodo yarn add typescript -D
+rodo yarn tsc --init
+yarn tsc
+yarn node src/index.js

@@ -1,0 +1,5 @@
+https://github.com/Rocketseat/bootcamp-gostack-desafios/tree/master/desafio-conceitos-nodejs
+
+Live da resolução dos 3 primeiros desafios
+
+https://www.youtube.com/watch?v=vwp3dQfPtKI&list=WL
